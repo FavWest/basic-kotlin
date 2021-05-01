@@ -1,24 +1,31 @@
 fun main() {
-    //Find the sum of all multiples of 3 or 5 below 1000
-    var sum = 0
-    var x =0
-    while(x < 1000) {
-        if(x % 3 == 0 || x % 5 == 0) sum += x
-        x++
+    //play Pig Dice
+    var compScore = 0
+    //var userScore = 0
+    while (compScore < 100) {
+        compScore += compTurn()
+        println("Computer total score: $compScore")
     }
-    println("The sum of all multiples of 3 or 5 below 1000 is $sum")
+    println("Final Score: $compScore")
+}
 
-    //Find the sum of even-numbered Fibonacci numbers below 100
-    sum = 0
-    x = 0
-    var y = 1
-    var next = 0
-    while(x < 4_000_000) {
-        println(x)
-        if(x%2==0) sum += x
-        next = x + y
-        x = y
-        y = next
+//fun userTurn(){
+    //user turn
+//}
+
+fun compTurn(): Int {
+    var x = 0
+    var turnScore = 0
+    var roll=0
+    while (x < 3) {
+        roll = (Math.random() * 6).toInt() + 1
+        println("Computer: Rolled $roll")
+        if (roll == 1) {
+            return 0
+        } else {
+            turnScore += roll
+        }
+        x ++
     }
-    println("The sum of even-numbered Fibonacci numbers below 4_000_000 is $sum")
+    return turnScore
 }
